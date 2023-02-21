@@ -25,18 +25,18 @@ public class Main {
       }
     }
     return output;
-
   }
 
   public static int[][] copyRagged(int[][] input) {
 
+    int[][] output = new int[][];
     for (int[] row : input) {
       for (int num : row) {
-        input[num]; 
+        
+        output[row][num] = input[row][num]; 
       }
     }
-
-    
+    return output;
   }
   
   public static void main(String[] args) {
