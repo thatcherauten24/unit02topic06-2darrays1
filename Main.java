@@ -40,6 +40,27 @@ public class Main {
     return output;
   }
   
+  public static void printTranspose(double[][] input) {
+
+    int origRows = input.length;
+    int origCols = input[0].length;
+
+    double[][] rotated = new double[origCols][origRows];
+
+    for (int c = 0; c < origCols; c++) {
+      for (int r = 0; r < origRows; r++) {
+        rotated[c][r] = input[r][c];
+      }
+    }
+
+    for (double[] row : rotated) {
+      for (double value : row) {
+        System.out.print(value + " ");
+      }
+      System.out.println();
+    }
+    
+  }
   public static void main(String[] args) {
     //int[][] origSquareArr = new int[][] {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
     //int[][] newSquareArr = copySquare(squareArr);
@@ -49,8 +70,22 @@ public class Main {
     //int[][] newRectArr = copyRectangle(origRectArr);
     //System.out.println(Arrays.deepToString(newRectArr));
 
-    int[][] origRagArr = new int[][] {{1, 2, 3}, {4, 5, 6, 7}, {8, 9}};
-    int[][] newRagArr = copyRagged(origRagArr);
-    System.out.println(Arrays.deepToString(newRagArr));
+    // int[][] origRagArr = new int[][] {{1, 2, 3}, {4, 5, 6, 7}, {8, 9}};
+    // int[][] newRagArr = copyRagged(origRagArr);
+    // System.out.println(Arrays.deepToString(newRagArr));
+
+    double[][] beforeTransposition = new double[][] {
+      {99, 85, 98},
+      {98, 57, 79},
+      {92, 77, 74},
+      {94, 62, 81},
+      {99, 94, 92},
+      {80, 76.5, 67},
+      {76, 58.5, 90.5},
+      {92, 66, 91},
+      {77, 70.5, 66.5},
+      {89, 89.5, 81}
+    };
+    printTranspose(beforeTransposition);
   }
 }
