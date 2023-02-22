@@ -29,12 +29,13 @@ public class Main {
 
   public static int[][] copyRagged(int[][] input) {
 
-    int[][] output = new int[][];
-    for (int[] row : input) {
-      for (int num : row) {
-        
-        output[row][num] = input[row][num]; 
+    int[][] output = new int[input.length][];
+    for (int row = 0; row < input.length; row ++) {
+      output[row] = new int[input[row].length];
+      for ( int col = 0; col < input[row].length; col++) {
+        output[row][col] = input[row][col];
       }
+      
     }
     return output;
   }
