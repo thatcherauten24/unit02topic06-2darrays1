@@ -2,6 +2,7 @@ import java.util.Arrays;
 public class Main {
 
   public static int[][] copySquare(int[][] input) {
+    // FIXME: don't hard code the dimensions... use the input to determine these
 
     int squareSize = 3;
 
@@ -15,6 +16,7 @@ public class Main {
   }
 
   public static int[][] copyRectangle(int[][] input) {
+    // FIXME: don't hard code the dimensions... use the input to determine these
     int rows = 4;
     int cols = 3;
 
@@ -27,6 +29,7 @@ public class Main {
     return output;
   }
 
+  // good
   public static int[][] copyRagged(int[][] input) {
 
     int[][] output = new int[input.length][];
@@ -40,6 +43,7 @@ public class Main {
     return output;
   }
   
+  // good
   public static void printTranspose(double[][] input) {
 
     int origRows = input.length;
@@ -61,6 +65,8 @@ public class Main {
     }
     
   }
+
+  // TODO: implement withWeightedAverage
   public static void main(String[] args) {
     //int[][] origSquareArr = new int[][] {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
     //int[][] newSquareArr = copySquare(squareArr);
