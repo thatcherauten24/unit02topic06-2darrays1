@@ -61,6 +61,40 @@ public class Main {
     }
     
   }
+
+  public static double[][] withWeightedAverage(double[][] input, double[] weights) {
+    int origRows = input.length;
+    int origCols = input[0].length;
+    
+    int newRows = input.length + 1;
+    int newCols = input[0].length + 1;
+    double[][] output = new double[newRows][newCols];
+
+    double rowAverage = 0;
+    for (int row = 0; row < origRows; row++) {
+        if (row == 0) {
+          double weightedValue = (input[row][0]) * weights[0];
+          rowAverage += weightedValue;
+        } else if (row == 1){
+          double weightedValue = (input[row][1]) * weights[1];
+          rowAverage += weightedValue;
+        } else if (row == 2) {
+          double weightedValue = (input[row][]) * weights[2];
+          rowAverage += weightedValue;
+        }
+    }
+
+    for (int row = 0; row < origRows; row++) {
+      for (int col = 0; col < origCols; col++) {
+        output[row][col] = input[row][col];
+        if (col == 3) {
+          output[row][3] = rowAverage;
+        }
+      }
+    }
+    return output;
+  }
+
   public static void main(String[] args) {
     //int[][] origSquareArr = new int[][] {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
     //int[][] newSquareArr = copySquare(squareArr);
@@ -70,11 +104,11 @@ public class Main {
     //int[][] newRectArr = copyRectangle(origRectArr);
     //System.out.println(Arrays.deepToString(newRectArr));
 
-    // int[][] origRagArr = new int[][] {{1, 2, 3}, {4, 5, 6, 7}, {8, 9}};
-    // int[][] newRagArr = copyRagged(origRagArr);
-    // System.out.println(Arrays.deepToString(newRagArr));
+    //int[][] origRagArr = new int[][] {{1, 2, 3}, {4, 5, 6, 7}, {8, 9}};
+    //int[][] newRagArr = copyRagged(origRagArr);
+    //System.out.println(Arrays.deepToString(newRagArr));
 
-    double[][] beforeTransposition = new double[][] {
+    double[][] spreadsheetData = new double[][] {
       {99, 85, 98},
       {98, 57, 79},
       {92, 77, 74},
@@ -86,6 +120,11 @@ public class Main {
       {77, 70.5, 66.5},
       {89, 89.5, 81}
     };
-    printTranspose(beforeTransposition);
+
+    //printTranspose(spreadsheetData);
+
+    double[] weights = new double[] {0.25, 0.25, 0.5};
+    double[][] averages = withWeightedAverage(spreadsheetData, weights);
+    System.out.println(Arrays.deepToString(averages));
   }
 }
