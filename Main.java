@@ -2,11 +2,9 @@ import java.util.Arrays;
 public class Main {
 
   public static int[][] copySquare(int[][] input) {
-    // FIXME: don't hard code the dimensions... use the input to determine these
-
-    int squareSize = 3;
-
+    int squareSize = input.length;
     int[][] output = new int[squareSize][squareSize];
+
     for (int r = 0; r < squareSize; r++) {
       for (int c = 0; c < squareSize; c++) {
         output[r][c] = input[r][c];
@@ -16,11 +14,10 @@ public class Main {
   }
 
   public static int[][] copyRectangle(int[][] input) {
-    // FIXME: don't hard code the dimensions... use the input to determine these
-    int rows = 4;
-    int cols = 3;
-
+    int rows = input.length;
+    int cols = input[0].length;
     int[][] output = new int[rows][cols];
+    
     for (int r = 0; r < rows; r++) {
       for (int c = 0; c < cols; c++) {
         output[r][c] = input[r][c];
