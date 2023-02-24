@@ -65,33 +65,39 @@ public class Main {
   public static double[][] withWeightedAverage(double[][] input, double[] weights) {
     int origRows = input.length;
     int origCols = input[0].length;
-    
     int newRows = input.length + 1;
     int newCols = input[0].length + 1;
     double[][] output = new double[newRows][newCols];
-
-    double rowAverage = 0;
-    for (int row = 0; row < origRows; row++) {
-        if (row == 0) {
-          double weightedValue = (input[row][0]) * weights[0];
-          rowAverage += weightedValue;
-        } else if (row == 1){
-          double weightedValue = (input[row][1]) * weights[1];
-          rowAverage += weightedValue;
-        } else if (row == 2) {
-          double weightedValue = (input[row][]) * weights[2];
-          rowAverage += weightedValue;
-        }
-    }
-
-    for (int row = 0; row < origRows; row++) {
-      for (int col = 0; col < origCols; col++) {
-        output[row][col] = input[row][col];
-        if (col == 3) {
-          output[row][3] = rowAverage;
-        }
+    
+    // sets output 2D array values
+    for (int r = 0; r < origRows; r++) {
+      for (int c = 0; c < origCols; c++) {
+        output[r][c] = input[r][c];
       }
     }
+
+
+    //calculates the weighted average of each row
+    for (int row = 0; row < origRows; row++) {
+      double rowAverage = 0;
+      for (int col = 0; col < origCols; col++) {
+        double weightedValue = 0;
+          weightedValue = (input[row][col]) * weights[col];
+          rowAverage += weightedValue;
+      }
+      output[row][origCols] = rowAverage;
+    }
+    
+    //calculates the average of each column
+    for (int col = 0; col < newCols; col++) {
+      double colAverage = 0;
+      for (int row = 0; row < origRows; row++) {
+        colAverage += output[row][col];
+      }
+      colAverage /= origRows;
+      output[origRows][col] = colAverage;
+    }
+
     return output;
   }
 
